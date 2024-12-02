@@ -5,12 +5,12 @@ public class BreathingActivity : Activity{
         this.breathDuration = breathDuration;
     }
     public void Run(){
-        Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
+        Console.WriteLine("\nThis activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
         DateTime end = Countdown();
         while (end > DateTime.Now){
-            Console.WriteLine("Breathe in.");
+            Console.WriteLine("\nBreathe in.");
             DispBuffer(breathDuration);
-            Console.WriteLine("Breathe out.");
+            Console.WriteLine("\nBreathe out.");
             DispBuffer(breathDuration);
         }
         Done();

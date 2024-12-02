@@ -5,7 +5,7 @@ public class ReflectionActivity : Activity{
     public ReflectionActivity(string name, int duration) : base(name, duration){
     }
     public void Run(){
-        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+        Console.WriteLine("\nThis activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
         Random random = new Random();
         Console.Write(prompts[random.Next(0, prompts.Length - 1)]);
         DateTime end = Countdown();
