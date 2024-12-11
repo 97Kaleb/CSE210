@@ -1,0 +1,15 @@
+{
+    "className" : "Fighter",
+    "hitDie" : 10,
+    "classSkills" : ["1: Acrobatics", "2: Animal Handling", "4: Athletics", "6: History", "7: Insight", "8: Intimidation", "12: Perception", "18: Survival"],
+    "skillChoices" : 2,
+    "classProf" : "Light armor|Medium armor|Heacy armor|shields|Simple weapons|Martial weapons",
+    "classSaves" : [true, false, true, false, false, false],
+    "subclassFeatureLvs" : [3, 7, 10, 15, 18],
+    "classProg" : ["Fighting Style | Second Wind", "Action Surge", null, "ASI", "Extra Attack (x1)", "ASI", null, "ASI", "Indomitable (x1)", null, "Extra Attack (x2)", "ASI", "Indomitable (x2)", "ASI", null, "ASI", "Action Surge (x2) | Indomitable (x3)", null, "ASI", "Extra Attack (x3)"],
+    "subclasses" : ["1: Banneret", "2: Cavalier", "3: Champion", "4: Samurai"],
+    "Banneret" : ["Rallying Cry", "Bonus Proficiency>[1, 14] | Expertise>[1, 14]", "Inspiring Surge", "Bulwark", "Inspiring Surge+"],
+    "Cavalier" : ["Bonus Proficiency>[1, 2, 6, 7, 13, 14] | Born to the Saddle | Unwavering Mark", "Warding Maneuver", "Hold the Line", "Ferocious Charger", "Vigilant Defender"],
+    "Champion" : ["Improved Critical", "Remarkable Athlete", "Additional Fighting Style", "Superior Critical", "Survivor"],
+    "Samurai" : ["Bonus Proficiency>[1, 6, 7, 13, 14] | Fighting Spirit", "Elegant Courtier | Bonus Save>[WIS]", "Tireless Spirit | Fighting Spirit+", "Rapid Strike | Fighting Spirit ++", "Strength Before Death"]
+}
