@@ -10,6 +10,24 @@ public abstract class CharClass{
     List<Boolean> classSaves;
     List<int> subclassFeatureLvs;
     public CharClass(JsonArray classObj){
-        
+        // Deal with JSON
+    }
+    public string GainLv(){
+        classLv++;
+        // probably needs more work
+        return classProg[classLv - 1];
+    }
+    public int GetLv(){
+        return classLv;
+    }
+    public string DispClasses(){
+        return $"{className} {classLv}";
+    }
+    public List<string> DispFeatures(){
+        List<string> obtainedFeatures = new List<string>();
+        for (int i = 0; i < classLv; i++){
+            obtainedFeatures.Add(classProg[i]);
+        }
+        return obtainedFeatures;
     }
 }
