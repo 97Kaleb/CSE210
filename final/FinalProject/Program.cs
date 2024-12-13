@@ -142,7 +142,9 @@ class Program
                             Console.WriteLine($"{i} {Attribute.GetSkillName(Int32.Parse(profChoices[i+1]))}");
                         }
                         int selection = Int32.Parse(Console.ReadLine());
-                        str.AddSkillProf("x");
+                        if (Int32.Parse(profChoices[selection]) == 4){
+                            str.AddSkillProf("x");
+                        }
                         dex.AddSkillProf(Int32.Parse(profChoices[selection]), "x");
                         smartness.AddSkillProf(Int32.Parse(profChoices[selection]), "x");
                         wis.AddSkillProf(Int32.Parse(profChoices[selection]), "x");
