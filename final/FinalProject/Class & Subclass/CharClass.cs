@@ -1,33 +1,22 @@
 using System.Text.Json.Nodes;
 
 public abstract class CharClass{
-    string className;
-    List<string> classProg;
-    List<string> classSkills;
-    int skillChoices;
-    int classLv = 0;
-    string classProf;
-    List<Boolean> classSaves;
-    List<int> subclassFeatureLvs;
-    public CharClass(JsonArray classObj){
-        // Deal with JSON
-    }
-    public string GainLv(){
-        classLv++;
-        // probably needs more work
-        return classProg[classLv - 1];
-    }
+    protected string className;
+    protected string[] classProg;
+    protected string[] classSkills;
+    protected int skillChoices;
+    protected int classLv = 0;
+    protected string[] classProf;
+    protected int hitDie;
+    protected Boolean[] classSaves = new Boolean[6];
+    protected int[] subclassFeatureLvs;
+    public CharClass(Dictionary<string, string> classInfo){}
+    public abstract string GainLv();
     public int GetLv(){
         return classLv;
     }
-    public string DispClasses(){
+    public virtual string DispClasses(){
         return $"{className} {classLv}";
     }
-    public List<string> DispFeatures(){
-        List<string> obtainedFeatures = new List<string>();
-        for (int i = 0; i < classLv; i++){
-            obtainedFeatures.Add(classProg[i]);
-        }
-        return obtainedFeatures;
-    }
+    public abstract List<string> DispFeatures();
 }

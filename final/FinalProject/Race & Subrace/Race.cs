@@ -2,12 +2,12 @@ using System.Text.Json.Nodes;
 
 public class Race{
     string raceName;
-    List<int> raceMods;
-    List<string> raceFeatures;
+    int[] raceMods;
+    string[] raceFeatures;
     int speed;
     string size;
-    public Race(JsonArray raceObject){
-        // Deal with JSON
+    public Race(Array raceInfo){
+
     }
     public int GetSpeed(){
         return speed;
@@ -15,10 +15,10 @@ public class Race{
     public string GetSize(){
         return size;
     }
-    public List<string> GetFeatures(){
+    public string[] GetFeatures(){
         return raceFeatures;
     }
-    public List<int> ApplyMods(){
+    public int[] ApplyMods(){
         return raceMods;
     }
 }

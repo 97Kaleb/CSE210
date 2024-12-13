@@ -1,7 +1,7 @@
 using System.Text.Json.Nodes;
 
-public class Subrace(JsonArray raceObj) : Race(raceObj){
+public class Subrace(Array raceInfo) : Race(raceInfo){
     string subraceName;
-    List<int> subraceMods;
-    List<string> subraceFeatures;
+    int[] subraceMods;
+    string[] subraceFeatures;
 }

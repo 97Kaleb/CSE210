@@ -33,6 +33,16 @@ public abstract class Attribute{
     public void AddSaveProf(){
         saveProf = true;
     }
+    public static string GetSkillName(int skillNum){
+        string[] skillNames = [
+            "Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"
+        ];
+        return skillNames[skillNum - 1];
+    }
+    public static List<int> GenerateScore(){
+        Random random= new Random();
+        return [random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6),];
+    }
     public Attribute(string name, int score){
         this.name = name;
         this.score = score;
