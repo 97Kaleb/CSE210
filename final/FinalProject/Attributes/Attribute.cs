@@ -41,7 +41,23 @@ public abstract class Attribute{
     }
     public static List<int> GenerateScore(){
         Random random= new Random();
-        return [random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6), random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6) + random.Next(1, 6),];
+        List<int> results = new List<int>();
+        for (int i = 0; i < 6; i++){
+            int s1 = random.Next(0, 6);
+            int s2 = random.Next(0,6);
+            int s3 = random.Next(0,6);
+            int s4 = random.Next(0,6);
+            if (s1 <= s2 && s1 <= s3 && s1 <= s4){
+                results.Add(s2 + s3 + s4);
+            }else if (s2 <= s3 && s2 <= s4){
+                results.Add(s1 + s3 + s4);
+            }else if (s3 <= s4){
+                results.Add(s1 + s2 + s4);
+            }else{
+                results.Add(s1 + s2 + s3);
+            }
+        }
+        return results;
     }
     public Attribute(string name, int score){
         this.name = name;

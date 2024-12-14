@@ -65,24 +65,25 @@ public class Subclass : CharClass{
             if (subclassFeatureLvs.Contains(i + 1)){
                 if (subclassProg[x].Contains('|')){
                     foreach (string s in subclassProg[x].Split('|')){
-                        if (!s.Contains("Bonus Proficiency") && !s.Contains("Expertise") && !s.Contains("Bonus Save")){
+                        if (!s.Contains("Bonus Proficiency") && !s.Contains("Expertise") && !s.Contains("Bonus Save") && !s.Contains("ASI")){
                             obtainedFeatures.Add(s);
                         }
                     }
                 }else{
-                    if (!subclassProg[i].Contains("Bonus Proficiency") && !subclassProg[i].Contains("Expertise") && !subclassProg[i].Contains("Bonus Save")){
+    List<int> subclassFeatureLvs = new List<int>();
+                    if (!subclassProg[i].Contains("Bonus Proficiency") && !subclassProg[i].Contains("Expertise") && !subclassProg[i].Contains("Bonus Save") && !subclassProg[i].Contains("ASI")){
                         obtainedFeatures.Add(subclassProg[i]);
                     }
                 }
             }
             if (classProg[i].Contains('|')){
                 foreach (string s in classProg[i].Split('|')){
-                    if (!s.Contains("Bonus Proficiency") && !s.Contains("Expertise") && !s.Contains("Bonus Save")){
+                    if (!s.Contains("Bonus Proficiency") && !s.Contains("Expertise") && !s.Contains("Bonus Save") && !s.Contains("ASI")){
                             obtainedFeatures.Add(s);
                     }
                 }
             }else{
-                if (!subclassProg[i].Contains("Bonus Proficiency") && !subclassProg[i].Contains("Expertise") && !subclassProg[i].Contains("Bonus Save")){
+                if (!classProg[i].Contains("Bonus Proficiency") && !classProg[i].Contains("Expertise") && !classProg[i].Contains("Bonus Save") && !classProg[i].Contains("ASI")){
                     obtainedFeatures.Add(classProg[i]);
                 }
             }

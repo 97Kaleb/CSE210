@@ -9,7 +9,7 @@ public abstract class CharClass{
     protected string[] classProf;
     protected int hitDie;
     protected Boolean[] classSaves = new Boolean[6];
-    protected int[] subclassFeatureLvs;
+    protected List<int> subclassFeatureLvs;
     public CharClass(Dictionary<string, string> classInfo){}
     public abstract string GainLv();
     public int GetLv(){
@@ -17,6 +17,9 @@ public abstract class CharClass{
     }
     public virtual string DispClasses(){
         return $"{className} {classLv}";
+    }
+    public Boolean[] GetClassSaves(){
+        return classSaves;
     }
     public abstract List<string> DispFeatures();
 }
