@@ -70,9 +70,8 @@ public class Subclass : CharClass{
                         }
                     }
                 }else{
-    List<int> subclassFeatureLvs = new List<int>();
-                    if (!subclassProg[i].Contains("Bonus Proficiency") && !subclassProg[i].Contains("Expertise") && !subclassProg[i].Contains("Bonus Save") && !subclassProg[i].Contains("ASI")){
-                        obtainedFeatures.Add(subclassProg[i]);
+                    if (!subclassProg[x].Contains("Bonus Proficiency") && !subclassProg[x].Contains("Expertise") && !subclassProg[x].Contains("Bonus Save") && !subclassProg[x].Contains("ASI")){
+                        obtainedFeatures.Add(subclassProg[x]);
                     }
                 }
             }

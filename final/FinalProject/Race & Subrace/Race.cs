@@ -1,13 +1,15 @@
 using System.Text.Json.Nodes;
 
 public class Race{
-    string raceName;
-    int[] raceMods;
-    string[] raceFeatures;
+    protected string raceName;
+    protected int[] raceMods;
+    protected string[] raceFeatures;
     int speed;
     string size;
-    public Race(Array raceInfo){
-
+    public Race(Dictionary<string, string> raceInfo){
+        raceName = raceInfo["raceName"];
+        size = raceInfo["size"];
+        speed = Int32.Parse(raceInfo["speed"]);
     }
     public int GetSpeed(){
         return speed;

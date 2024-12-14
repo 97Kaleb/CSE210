@@ -12,9 +12,9 @@ class Program
             Console.WriteLine($"{scoreCounter}: {score}");
         }
         int assigningStat = Int32.Parse(Console.ReadLine()) - 1;
-        int S = generatedScores[assigningStat];
+        int s = generatedScores[assigningStat];
         generatedScores.RemoveAt(assigningStat);
-        return S;
+        return s;
     }
     static int Menu(){
         int menuSelect = 0;
@@ -34,13 +34,11 @@ class Program
                             }
                         }
                         int selection = Int32.Parse(Console.ReadLine());
-                        if (Int32.Parse(profChoices[selection]) == 4){
-                            str.AddSkillProf(mode);
-                        }
-                        dex.AddSkillProf(Int32.Parse(profChoices[selection]), mode);
-                        smartness.AddSkillProf(Int32.Parse(profChoices[selection]), mode);
-                        wis.AddSkillProf(Int32.Parse(profChoices[selection]), mode);
-                        cha.AddSkillProf(Int32.Parse(profChoices[selection]), mode);
+                        str.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+                        dex.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+                        smartness.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+                        wis.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+                        cha.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
                     }
     }
     static void BonusSave(string[] profGain, Strength str, Dexterity dex, Constitution con, Intelligence smartness, Wisdom wis, Charisma cha){
@@ -58,6 +56,21 @@ class Program
             cha.AddSaveProf();
         }
     }
+    static void ASIncrease(int selection, Strength str, Dexterity dex, Constitution con, Intelligence smartness, Wisdom wis, Charisma cha){
+        if (selection == 1){
+                str.IncreaseScore(1);
+            }else if (selection == 2){
+                dex.IncreaseScore(1);
+            }else if (selection == 3){
+                con.IncreaseScore(1);
+            }else if (selection == 4){
+                smartness.IncreaseScore(1);
+            }else if (selection == 5){
+                wis.IncreaseScore(1);
+            }else if (selection == 6){
+                cha.IncreaseScore(1);
+            }
+    }
     static void ASI(Strength str, Dexterity dex, Constitution con, Intelligence smartness, Wisdom wis, Charisma cha){
         for (int i = 0; i < 2; i++){
             if (i == 0){
@@ -66,19 +79,7 @@ class Program
                 Console.WriteLine("Chosse where to place your other +1:\n1: STR\n2: DEX\n3: CON\n4: INT\n5: WIS\n6: CHA");
             }
             int selectionASI = Int32.Parse(Console.ReadLine());
-            if (selectionASI == 1){
-                str.IncreaseScore(1);
-            }else if (selectionASI == 2){
-                dex.IncreaseScore(1);
-            }else if (selectionASI == 3){
-                con.IncreaseScore(1);
-            }else if (selectionASI == 4){
-                smartness.IncreaseScore(1);
-            }else if (selectionASI == 5){
-                wis.IncreaseScore(1);
-            }else if (selectionASI == 6){
-                cha.IncreaseScore(1);
-            }
+            ASIncrease(selectionASI, str, dex, con, smartness, wis, cha);
         }
     }
     static string GetSkills(int prof, Strength str, Dexterity dex, Intelligence smartness, Wisdom wis, Charisma cha){
@@ -126,6 +127,17 @@ class Program
             {"2", "Thought-Rend,Mind Bleed,Psionic Leech,Shatter,Potent Psionics"},
             {"3", "Psionic Crystals,Crystal Construct,Warp,Improved Crystal Construct,Supreme Crystal Construct"}
         };
+        Dictionary<string, string> raceInfo = new Dictionary<string, string>{
+            {"raceName", "Minotaur"},
+            {"speed", "40"},
+            {"size", "M"},
+            {"Racial Mods", "1+1"},
+            {"Racial Features", "Superior Darkvision,Labyrinthine Mind,Minotaur's Horns"},
+            {"subraces", "1: Flameheart Minotaur,2: Shadow Form Minotaur,3: Stone-Eye Minotaur"},
+            {"1", "3+3,Volcanic Blood,Molten Swings"},
+            {"2", "4+4,Shadow Form,Racial Spellcasting"},
+            {"3", "5+5,Stone Armor,Mystic Vision"}
+        };
         List<int> generatedScores = Attribute.GenerateScore();
         Console.WriteLine("Please assign your Ability Scores\nStrength:");
         int strS = AssignStat(generatedScores);
@@ -146,32 +158,47 @@ class Program
         Intelligence smartness = new Intelligence("Intelligence", intS);
         Wisdom wis = new Wisdom("Wisdom", wisS);
         Charisma cha = new Charisma("Charisma", chaS);
-        Subclass s1 = new Subclass(classInfoF);
-        Subclass s2 = new Subclass(classInfoP);
+        Subclass s1 = new Subclass(classInfoP);
+        Subrace r = new Subrace(raceInfo);
+
+        int[] racialMods = r.GetMods();
+        foreach (int mod in racialMods){
+            ASIncrease(mod, str, dex, con, smartness, wis, cha);
+        }
+        
+        Boolean[] classSaves = s1.GetClassSaves();
+        for (int i = 0; i < 6; i++){
+            if (classSaves[i]){
+                if (i == 0){
+                    str.AddSaveProf();
+                }else if (i == 1){
+                    dex.AddSaveProf();
+                }else if (i == 2){
+                    con.AddSaveProf();
+                }else if (i == 3){
+                    smartness.AddSaveProf();
+                }else if (i == 4){
+                    wis.AddSaveProf();
+                }else if (i == 5){
+                    cha.AddSaveProf();
+                }
+            }
+        }
+
         while (true){
             int menuSelect = Menu();
             if (menuSelect == 1){
                 string[] lvFeatures = s1.GainLv().Split('~');
                 if (charLv == 0){
                     hitPoints = hitPoints + Int32.Parse(lvFeatures[1]);
-                    Boolean[] classSaves = s1.GetClassSaves();
-                    for (int i = 0; i < 6; i++){
-                        if (classSaves[i]){
-                            if (i == 0){
-                                str.AddSaveProf();
-                            }else if (i == 1){
-                                dex.AddSaveProf();
-                            }else if (i == 2){
-                                con.AddSaveProf();
-                            }else if (i == 3){
-                                smartness.AddSaveProf();
-                            }else if (i == 4){
-                                wis.AddSaveProf();
-                            }else if (i == 5){
-                                cha.AddSaveProf();
-                            }
-                        }
+                    string[] classSkills = s1.getClassSkills();
+                    for (int i = 0; i < classSkills.Count() ; i++){
+                        classSkills[i] = classSkills[i].Split(':')[0];
                     }
+                    List<string> classSkillsList = [$"{s1.getSkillChoices}", .. classSkills];
+                    string[] classSkillsArray = classSkillsList.ToArray();
+                    Console.WriteLine("Choose Class Skill Proficiencies");
+                    BonusSkill("o", classSkillsArray, str, dex, smartness, wis, cha);
                 }else{
                     Random random = new Random();;
                     hitPoints = hitPoints + random.Next(1, Int32.Parse(lvFeatures[1]));
@@ -198,8 +225,22 @@ class Program
                     }
                 }
             }else if (menuSelect == 2){
-                Console.WriteLine($"Level {charLv} Character\nHit Points: {hitPoints}");
+                Console.WriteLine($"Level {charLv} Character\nHit Points: {hitPoints}\nSize: {r.GetSize()}\nSpeed: {r.GetSpeed()}'");
+                Console.WriteLine(str.DispScore(prof));
+                Console.WriteLine(dex.DispScore(prof));
+                Console.WriteLine(con.DispScore(prof));
+                Console.WriteLine(smartness.DispScore(prof));
+                Console.WriteLine(wis.DispScore(prof));
+                Console.WriteLine(cha.DispScore(prof));
                 Console.WriteLine(s1.DispClasses());
+                string[] raceFeats = r.GetFeatures();
+                string[] subraceFeats = r.GetSubraceFeatures();
+                foreach (string raceFeat in raceFeats){
+                    Console.WriteLine(raceFeat);
+                }
+                foreach (string subraceFeat in subraceFeats){
+                    Console.WriteLine(subraceFeat);
+                }
                 Console.WriteLine(string.Join(", ", s1.DispFeatures().Where(f => !string.IsNullOrEmpty(f))).Trim(' ').Trim(','));
                 Console.WriteLine(GetSkills(prof, str, dex, smartness, wis, cha));
             }else if (menuSelect == 3){

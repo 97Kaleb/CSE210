@@ -20,7 +20,9 @@ public class Strength(string name, int score) : Attribute(name, score){
             return null;
         }
     }
-    public void AddSkillProf(string profType){
-        athlProf = profType;
+    public void AddSkillProf(int skillNum, string profType){
+        if (skillNum == 4){
+            athlProf = profType;
+        }
     }
 }

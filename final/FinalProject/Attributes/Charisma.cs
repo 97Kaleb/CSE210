@@ -22,7 +22,7 @@ public class Charisma(string name, int score) : Attribute(name, score){
             }else{
                 return $"{deceProf} Deception: {deceScore}\n";
             }
-        }else if (skillNum == 6){
+        }else if (skillNum == 8){
             if (intiProf == "x"){
                 intiScore = mod + (prof * 2);
             }else if (intiProf == "o"){
@@ -35,7 +35,7 @@ public class Charisma(string name, int score) : Attribute(name, score){
             }else{
                 return $"{intiProf} Intimidation: {intiScore}\n";
             }
-        }else if (skillNum == 9){
+        }else if (skillNum == 13){
             if (perfProf == "x"){
                 perfScore = mod + (prof * 2);
             }else if (perfProf == "o"){
@@ -48,7 +48,7 @@ public class Charisma(string name, int score) : Attribute(name, score){
             }else{
                 return $"{perfProf} Performance: {perfScore}\n";
             }
-        }else if (skillNum == 11){
+        }else if (skillNum == 14){
             if (persProf == "x"){
                 persScore = mod + (prof * 2);
             }else if (persProf == "o"){
@@ -66,13 +66,13 @@ public class Charisma(string name, int score) : Attribute(name, score){
         }
     }
     public void AddSkillProf(int skillNum, string profType){
-        if (skillNum == 3){
+        if (skillNum == 5){
             deceProf = profType;
-        }else if (skillNum == 6){
+        }else if (skillNum == 8){
             intiProf = profType;
-        }else if (skillNum == 9){
+        }else if (skillNum == 13){
             perfProf = profType;
-        }else if (skillNum == 11){
+        }else if (skillNum == 14){
             persProf = profType;
         }
     }

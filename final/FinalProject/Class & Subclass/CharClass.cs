@@ -22,4 +22,10 @@ public abstract class CharClass{
         return classSaves;
     }
     public abstract List<string> DispFeatures();
+    public int getSkillChoices(){
+        return skillChoices;
+    }
+    public string[] getClassSkills(){
+        return classSkills;
+    }
 }
