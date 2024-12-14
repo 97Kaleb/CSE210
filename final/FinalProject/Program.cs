@@ -81,6 +81,17 @@ class Program
             }
         }
     }
+    static string GetSkills(int prof, Strength str, Dexterity dex, Intelligence smartness, Wisdom wis, Charisma cha){
+        string skills = "";
+        for (int i = 1; i <= 18; i++){
+            skills += str.GetSkill(i, prof);
+            skills += dex.GetSkill(i, prof);
+            skills += smartness.GetSkill(i, prof);
+            skills += wis.GetSkill(i, prof);
+            skills += cha.GetSkill(i, prof);
+        }
+        return skills;
+    }
     static void Main(string[] args)
     {
         int charLv = 0;
@@ -190,6 +201,7 @@ class Program
                 Console.WriteLine($"Level {charLv} Character\nHit Points: {hitPoints}");
                 Console.WriteLine(s1.DispClasses());
                 Console.WriteLine(string.Join(", ", s1.DispFeatures().Where(f => !string.IsNullOrEmpty(f))).Trim(' ').Trim(','));
+                Console.WriteLine(GetSkills(prof, str, dex, smartness, wis, cha));
             }else if (menuSelect == 3){
                 break;
             }

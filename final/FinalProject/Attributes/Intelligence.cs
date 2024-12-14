@@ -20,9 +20,9 @@ public class Intelligence(string name, int score) : Attribute(name, score){
                 arcaScore = mod;
             }
             if (arcaScore >= 0){
-                return $"{arcaProf} Athletics : {arcaScore}\n";
+                return $"{arcaProf} Arcana: {arcaScore}\n";
             }else{
-                return $"{arcaProf} Athletics : {arcaScore}\n";
+                return $"{arcaProf} Arcana: {arcaScore}\n";
             }
         }else if (skillNum == 6){
             if (histProf == "x"){
@@ -33,9 +33,9 @@ public class Intelligence(string name, int score) : Attribute(name, score){
                 histScore = mod;
             }
             if (histScore >= 0){
-                return $"{histProf} Athletics : {histScore}\n";
+                return $"{histProf} History: {histScore}\n";
             }else{
-                return $"{histProf} Athletics : {histScore}\n";
+                return $"{histProf} History: {histScore}\n";
             }
         }else if (skillNum == 9){
             if (inveProf == "x"){
@@ -46,9 +46,9 @@ public class Intelligence(string name, int score) : Attribute(name, score){
                 inveScore = mod;
             }
             if (inveScore >= 0){
-                return $"{inveProf} Athletics : {inveScore}\n";
+                return $"{inveProf} Investigation: {inveScore}\n";
             }else{
-                return $"{inveProf} Athletics : {inveScore}\n";
+                return $"{inveProf} Investigation: {inveScore}\n";
             }
         }else if (skillNum == 11){
             if (natuProf == "x"){
@@ -59,9 +59,9 @@ public class Intelligence(string name, int score) : Attribute(name, score){
                 natuScore = mod;
             }
             if (natuScore >= 0){
-                return $"{natuProf} Athletics : {natuScore}\n";
+                return $"{natuProf} Nature: {natuScore}\n";
             }else{
-                return $"{natuProf} Athletics : {natuScore}\n";
+                return $"{natuProf} Nature: {natuScore}\n";
             }
         }else if (skillNum == 15){
             if (reliProf == "x"){
@@ -72,9 +72,9 @@ public class Intelligence(string name, int score) : Attribute(name, score){
                 reliScore = mod;
             }
             if (reliScore >= 0){
-                return $"{reliProf} Athletics : {reliScore}\n";
+                return $"{reliProf} Religion: {reliScore}\n";
             }else{
-                return $"{reliProf} Athletics : {reliScore}\n";
+                return $"{reliProf} Religion: {reliScore}\n";
             }
         }else{
             return null;

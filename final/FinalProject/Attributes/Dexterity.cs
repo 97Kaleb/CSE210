@@ -16,9 +16,9 @@ public class Dexterity(string name, int score) : Attribute(name, score){
                 acroScore = mod;
             }
             if (acroScore >= 0){
-                return $"{acroProf} Athletics : {acroScore}\n";
+                return $"{acroProf} Acrobatics: {acroScore}\n";
             }else{
-                return $"{acroProf} Athletics : {acroScore}\n";
+                return $"{acroProf} Acrobatics: {acroScore}\n";
             }
         }else if (skillNum == 16){
             if (sleiProf == "x"){
@@ -29,9 +29,9 @@ public class Dexterity(string name, int score) : Attribute(name, score){
                 sleiScore = mod;
             }
             if (sleiScore >= 0){
-                return $"{sleiProf} Athletics : {sleiScore}\n";
+                return $"{sleiProf} Slight of Hand: {sleiScore}\n";
             }else{
-                return $"{sleiProf} Athletics : {sleiScore}\n";
+                return $"{sleiProf} Slight of Hand: {sleiScore}\n";
             }
         }else if (skillNum == 17){
             if (steaProf == "x"){
@@ -42,9 +42,9 @@ public class Dexterity(string name, int score) : Attribute(name, score){
                 steaScore = mod;
             }
             if (steaScore >= 0){
-                return $"{steaProf} Athletics : {steaScore}\n";
+                return $"{steaProf} Stealth: {steaScore}\n";
             }else{
-                return $"{steaProf} Athletics : {steaScore}\n";
+                return $"{steaProf} Stealth: {steaScore}\n";
             }
         }else{
             return null;

@@ -9,7 +9,7 @@ public class Charisma(string name, int score) : Attribute(name, score){
     int persScore;
     public override string GetSkill(int skillNum, int prof)
     {
-        if (skillNum == 3){
+        if (skillNum == 5){
             if (deceProf == "x"){
                 deceScore = mod + (prof * 2);
             }else if (deceProf == "o"){
@@ -18,9 +18,9 @@ public class Charisma(string name, int score) : Attribute(name, score){
                 deceScore = mod;
             }
             if (deceScore >= 0){
-                return $"{deceProf} Athletics : {deceScore}\n";
+                return $"{deceProf} Deception: {deceScore}\n";
             }else{
-                return $"{deceProf} Athletics : {deceScore}\n";
+                return $"{deceProf} Deception: {deceScore}\n";
             }
         }else if (skillNum == 6){
             if (intiProf == "x"){
@@ -31,9 +31,9 @@ public class Charisma(string name, int score) : Attribute(name, score){
                 intiScore = mod;
             }
             if (intiScore >= 0){
-                return $"{intiProf} Athletics : {intiScore}\n";
+                return $"{intiProf} Intimidation: {intiScore}\n";
             }else{
-                return $"{intiProf} Athletics : {intiScore}\n";
+                return $"{intiProf} Intimidation: {intiScore}\n";
             }
         }else if (skillNum == 9){
             if (perfProf == "x"){
@@ -44,9 +44,9 @@ public class Charisma(string name, int score) : Attribute(name, score){
                 perfScore = mod;
             }
             if (perfScore >= 0){
-                return $"{perfProf} Athletics : {perfScore}\n";
+                return $"{perfProf} Performance: {perfScore}\n";
             }else{
-                return $"{perfProf} Athletics : {perfScore}\n";
+                return $"{perfProf} Performance: {perfScore}\n";
             }
         }else if (skillNum == 11){
             if (persProf == "x"){
@@ -57,9 +57,9 @@ public class Charisma(string name, int score) : Attribute(name, score){
                 persScore = mod;
             }
             if (persScore >= 0){
-                return $"{persProf} Athletics : {persScore}\n";
+                return $"{persProf} Persuasion: {persScore}\n";
             }else{
-                return $"{persProf} Athletics : {persScore}\n";
+                return $"{persProf} Persuasion: {persScore}\n";
             }
         }else{
             return null;

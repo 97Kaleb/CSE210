@@ -20,9 +20,9 @@ public class Wisdom(string name, int score) : Attribute(name, score){
                 animScore = mod;
             }
             if (animScore >= 0){
-                return $"{animProf} Athletics : {animScore}\n";
+                return $"{animProf} Animal Handling: {animScore}\n";
             }else{
-                return $"{animProf} Athletics : {animScore}\n";
+                return $"{animProf} Animal Handling: {animScore}\n";
             }
         }else if (skillNum == 7){
             if (insiProf == "x"){
@@ -33,9 +33,9 @@ public class Wisdom(string name, int score) : Attribute(name, score){
                 insiScore = mod;
             }
             if (insiScore >= 0){
-                return $"{insiProf} Athletics : {insiScore}\n";
+                return $"{insiProf} Insight: {insiScore}\n";
             }else{
-                return $"{insiProf} Athletics : {insiScore}\n";
+                return $"{insiProf} Insight: {insiScore}\n";
             }
         }else if (skillNum == 10){
             if (mediProf == "x"){
@@ -46,9 +46,9 @@ public class Wisdom(string name, int score) : Attribute(name, score){
                 mediScore = mod;
             }
             if (mediScore >= 0){
-                return $"{mediProf} Athletics : {mediScore}\n";
+                return $"{mediProf} Medicine: {mediScore}\n";
             }else{
-                return $"{mediProf} Athletics : {mediScore}\n";
+                return $"{mediProf} Medicine: {mediScore}\n";
             }
         }else if (skillNum == 12){
             if (percProf == "x"){
@@ -59,9 +59,9 @@ public class Wisdom(string name, int score) : Attribute(name, score){
                 percScore = mod;
             }
             if (percScore >= 0){
-                return $"{percProf} Athletics : {percScore}\n";
+                return $"{percProf} Perception: {percScore}\n";
             }else{
-                return $"{percProf} Athletics : {percScore}\n";
+                return $"{percProf} Perception: {percScore}\n";
             }
         }else if (skillNum == 18){
             if (survProf == "x"){
@@ -72,9 +72,9 @@ public class Wisdom(string name, int score) : Attribute(name, score){
                 survScore = mod;
             }
             if (survScore >= 0){
-                return $"{survProf} Athletics : {survScore}\n";
+                return $"{survProf} Survival: {survScore}\n";
             }else{
-                return $"{survProf} Athletics : {survScore}\n";
+                return $"{survProf} Survival: {survScore}\n";
             }
         }else{
             return null;
