@@ -12,15 +12,15 @@ public abstract class Attribute{
         }
         if (mod >= 0){
             if (save >= 0){
-                return $"{score} {name}\nMod:  +{mod}\nSave: +{save}";
+                return $"{score} {name}{String.Concat(Enumerable.Repeat(' ', 15 - name.Length - score.ToString().Length))}Mod:  +{mod} Save: +{save}";
             }else{
-                return $"{score} {name}\nMod:  +{mod}\nSave: {save}";
+                return $"{score} {name}{String.Concat(Enumerable.Repeat(' ', 15 - name.Length - score.ToString().Length))}Mod:  +{mod} Save: {save}";
             }
         }else{
             if (save >= 0){
-                return $"{score} {name}\nMod:  {mod}\nSave: +{save}";
+                return $"{score} {name}{String.Concat(Enumerable.Repeat(' ', 15 - name.Length - score.ToString().Length))}Mod:  {mod} Save: +{save}";
             }else{
-                return $"{score} {name}\nMod:  {mod}\nSave: {save}";
+                return $"{score} {name}{String.Concat(Enumerable.Repeat(' ', 15 - name.Length - score.ToString().Length))}Mod:  {mod} Save: {save}";
             }
         }
     }
@@ -29,6 +29,7 @@ public abstract class Attribute{
     }
     public void IncreaseScore(int increase){
         score += increase;
+        mod = (score - 10) / 2;
     }
     public void AddSaveProf(){
         saveProf = true;
@@ -62,6 +63,6 @@ public abstract class Attribute{
     public Attribute(string name, int score){
         this.name = name;
         this.score = score;
-        mod = (score - 10) / 2 - score % 2;
+        mod = (score - 10) / 2;
     }
 }

@@ -12,6 +12,10 @@ class Program
             Console.WriteLine($"{scoreCounter}: {score}");
         }
         int assigningStat = Int32.Parse(Console.ReadLine()) - 1;
+        while (scoreCounter < assigningStat || assigningStat < 0){
+            Console.WriteLine("Invalid input. Choose again.");
+            assigningStat = Int32.Parse(Console.ReadLine());
+        }
         int s = generatedScores[assigningStat];
         generatedScores.RemoveAt(assigningStat);
         return s;
@@ -27,19 +31,25 @@ class Program
         return menuSelect;
     }
     static void BonusSkill(string mode, string[] profChoices, Strength str, Dexterity dex, Intelligence smartness, Wisdom wis, Charisma cha){
+        int sC = 0;
         for (int j = 0; j < Int32.Parse(profChoices[1]); j++){
-                        for (int i = 2; i < profChoices.Length; i++){
-                            if (!string.IsNullOrEmpty(profChoices[i])){
-                                Console.WriteLine($"{i - 1} {Attribute.GetSkillName(Int32.Parse(profChoices[i]))}");
-                            }
-                        }
-                        int selection = Int32.Parse(Console.ReadLine());
-                        str.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
-                        dex.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
-                        smartness.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
-                        wis.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
-                        cha.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
-                    }
+            for (int i = 2; i < profChoices.Length; i++){
+                if (!string.IsNullOrEmpty(profChoices[i])){
+                    sC++;
+                    Console.WriteLine($"{i - 1} {Attribute.GetSkillName(Int32.Parse(profChoices[i]))}");
+                }
+            }
+            int selection = Int32.Parse(Console.ReadLine());
+            while(selection > sC || selection <= 0){
+                Console.WriteLine("Invalid input. Choose again.");
+            }
+            str.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+            dex.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+            smartness.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+            wis.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+            cha.AddSkillProf(Int32.Parse(profChoices[selection + 1]), mode);
+            profChoices = profChoices.Where(o=> o != profChoices[selection + 1]).ToArray();
+        }
     }
     static void BonusSave(string[] profGain, Strength str, Dexterity dex, Constitution con, Intelligence smartness, Wisdom wis, Charisma cha){
         if (profGain[1] == "STR"){
@@ -69,6 +79,10 @@ class Program
                 wis.IncreaseScore(1);
             }else if (selection == 6){
                 cha.IncreaseScore(1);
+            }else{
+                Console.WriteLine("Invalid Input. Choose another Ability Score.");
+                selection = Int32.Parse(Console.ReadLine());
+                ASIncrease(selection, str, dex, con, smartness, wis, cha);
             }
     }
     static void ASI(Strength str, Dexterity dex, Constitution con, Intelligence smartness, Wisdom wis, Charisma cha){
@@ -225,7 +239,7 @@ class Program
                     }
                 }
             }else if (menuSelect == 2){
-                Console.WriteLine($"Level {charLv} Character\nHit Points: {hitPoints}\nSize: {r.GetSize()}\nSpeed: {r.GetSpeed()}'");
+                Console.WriteLine($"Level {charLv} Character\nHit Points: {hitPoints + (con.GetMod() * charLv)}\nSize: {r.GetSize()}\nSpeed: {r.GetSpeed()}'");
                 Console.WriteLine(str.DispScore(prof));
                 Console.WriteLine(dex.DispScore(prof));
                 Console.WriteLine(con.DispScore(prof));
@@ -241,6 +255,8 @@ class Program
                 foreach (string subraceFeat in subraceFeats){
                     Console.WriteLine(subraceFeat);
                 }
+                Console.WriteLine(string.Join(", ", r.GetFeatures().Where(f => !string.IsNullOrEmpty(f))).Trim(' ').Trim(','));
+                Console.WriteLine(string.Join(", ", r.GetSubraceFeatures().Where(f => !string.IsNullOrEmpty(f))).Trim(' ').Trim(','));
                 Console.WriteLine(string.Join(", ", s1.DispFeatures().Where(f => !string.IsNullOrEmpty(f))).Trim(' ').Trim(','));
                 Console.WriteLine(GetSkills(prof, str, dex, smartness, wis, cha));
             }else if (menuSelect == 3){

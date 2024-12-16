@@ -22,10 +22,16 @@ public class Subclass : CharClass{
             subclassFeatureLvs.Add(Int32.Parse(item));
         }
         classProg = classInfo["classProg"].Split(',');
+        int scN = 0;
         foreach (string item in classInfo["subclasses"].Split(',')){
             Console.WriteLine(item);
+            scN++;
         }
         int selection = Int32.Parse(Console.ReadLine());
+        while (selection > scN || selection <= 0) {
+            Console.WriteLine("Invalid input. Choose again.");
+            selection = Int32.Parse(Console.ReadLine());
+        }
         string subclassSelection = classInfo["subclasses"].Split(',')[selection - 1];
         subclassName = subclassSelection.Split(':')[1].Trim(' ');
         subclassProg = classInfo[selection.ToString()].Split(',');

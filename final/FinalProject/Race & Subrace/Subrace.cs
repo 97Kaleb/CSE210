@@ -5,11 +5,17 @@ public class Subrace : Race{
     int[] subraceMods;
     string[] subraceFeatures;
     public Subrace(Dictionary<string, string> raceInfo) : base(raceInfo){
+        int srC = 0;
         Console.WriteLine($"Choose a subrace:");
         foreach (string s in raceInfo["subraces"].Split(',')){
+            srC++;
             Console.WriteLine(s);
         }
         int selection = Int32.Parse(Console.ReadLine());
+        if (selection > srC || selection <= 0){
+            Console.WriteLine("Invalid selection. Choose again.");
+            selection = Int32.Parse(Console.ReadLine());
+        }
         string subraceSelection = raceInfo["subraces"].Split(',')[selection - 1];
         subraceName = subraceSelection.Split(':')[1].Trim(' ');
         raceMods = Array.ConvertAll(raceInfo["Racial Mods"].Split('+'), Int32.Parse);
